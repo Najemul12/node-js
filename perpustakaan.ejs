@@ -1,0 +1,60 @@
+<%- include partials/header.ejs %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="margin">DATA BUKU</h3>
+      <div class="panel panel-default panel-table">
+        <div class="panel-body">
+          <table class="table table-striped table-bordered ">
+            <thead class="bg-info">
+              <button class="btn btn-warning" type="submit" onclick="tambahData()">+Tambah</button>
+              <tr>
+                <th class="text-center">No</th>
+                <th class="text-center">KODE</th>
+                <th class="text-center">JUDUL</th>
+                <th class="text-center">PENGARANG</th>
+                <th class="text-center">PENERBIT</th>
+                <th class="text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(data.length){                   
+                    for(var i = 0;i < data.length;i++) { %>
+
+              <tr>
+                <td class="text-center">
+                  <%=(i+1)%>
+                </td>
+                <td>
+                  <%=data[i].id%>
+                </td>
+                <td>
+                  <%=data[i].judul%>
+                </td>
+                <td>
+                  <%=data[i].pengarang%>
+                </td>
+                <td>
+                  <%=data[i].penerbit%>
+                </td>
+                <td align="center">
+                  <a class="btn btn-primary" href="../edit/<%=data[i].id%>">Edit</a>
+                  <a class="btn btn-danger" href="../delete/<%=data[i].id%>">Hapus</a>
+                </td>
+              </tr>
+              </thead>
+              <% }                 
+                  }else{ %>
+              <tr>
+                <td colspan="3">Belum ada Data</td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include partials/footer.ejs %>
